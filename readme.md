@@ -1,3 +1,3 @@
-# Team project
+# Teamlib project
 
-Hello team
+Teamlib is a library to create plots from WISKI database.
