@@ -14,10 +14,13 @@
 #Importing libraries.
 
 import numpy as np
+import pandas as pd
 
 
 
-def fun ():
+
+
+def DatareadFUN ():
     """
         -Function which objective is:...
         -Parameters:
@@ -26,4 +29,7 @@ def fun ():
         -Returns:
         xxxx
     """
+    data_df = pd.read_pickle("/home/ines/Documents/Phd/OwnCloud/Development/data/OJP/*.pkl")
+    retun data_df
     
+print 
