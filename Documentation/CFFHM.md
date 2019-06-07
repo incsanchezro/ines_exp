@@ -161,7 +161,7 @@ You can get an account on my linux server - just ask me. The computer name is `w
 passwd
 ```
 
-## Working collaboratively with git
+## Working with git
 
 `git` is a software tool that allows you to 1) track changes in your files and 2) work collaboratively sharing files with others. You will likely use `git` both privately, to track your own work, and collaboratively, in particular to co-develop scripts with others. Here, each is outlined.
 
