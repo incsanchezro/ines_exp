@@ -161,7 +161,7 @@ You can get an account on my linux server - just ask me. The computer name is `w
 passwd
 ```
 
-## Working collaboratively with git
+## Working with git
 
 `git` is a software tool that allows you to 1) track changes in your files and 2) work collaboratively sharing files with others. You will likely use `git` both privately, to track your own work, and collaboratively, in particular to co-develop scripts with others. Here, each is outlined.
 
@@ -180,7 +180,7 @@ Now you are ready to go.
 
 ### Working privately with `git`
 
-A `git` repository is a folder on your computer. In the background hidden from you, `git` stores older versions of files. You must periodically "commit" your files to the repository, and provide a message when you do this. The messages are really helpful when you come back to the work at a later date. 
+Git can be used to track any project (i.e. papers or scripts). This version control system will support you and your coworkers to undertake fast, collaborative development. A `git` repository is a folder on your computer. In the background hidden from you, `git` stores older versions of files. You must periodically "commit" your files to the repository, and provide a message when you do this. The messages are really helpful when you come back to the work at a later date. 
 
 Follow this demonstration:
 
@@ -235,9 +235,9 @@ That is all there is to working privately. Here is a screenshot of the end of my
 \end{center}
 
 
-### Working collaboratively with `git`
+### Working individually with `git` on a server
 
-To work on a project with someone else, a `git` repository can be hosted on a server. This means, in addition to having a repository on your computer, that you continually update as above, you also periodically push your work to the repository on the server, and pull changes made by others from the server to your computer. Here is the work flow for this, assuming that the remote repository already exists, either on github or on a linux server (see advanced section below if oyu need to create a remote repository).
+A `git` repository can be hosted on a server, which is a good way to ensure you have everything backed up (or to work collaboratively with others - see below). This means, in addition to having a repository on your computer, that you continually update as above, you also periodically push your work to the repository on the server, and pull changes made by others from the server to your computer. Here is the work flow for this, assuming that the remote repository already exists, either on github or on a linux server (see advanced section below if oyu need to create a remote repository).
 
 First you need to clone the repository onto your machine. This will copy all the files from the server, and make a local git repository at the same time. To do this, type
 
@@ -277,14 +277,70 @@ git pull origin master
 
 That is it! Note, you can also work on your own branch, instead of master. I have not done this yet, so will not document that here.
 
-### Git branches
-Git can be used to track any project (i.e. papers or scripts). Under collaborative networking, this version control system will support you and your coworkers on the fast and update development. With this objective, on git, the lastest and updated version of the project is located on the master branch. A new developer should create their branches (local branches) to create improvements and contributions to the master project. In order to protect the general project, it is desirable that always the collaborators work on their branches and once the contribution fulfils the task or issue required, merge the improvement with the master branch. In other words, a branch is a local draft space where the collaborator can create its contributions and verify that it is stable. Perhaps, for this reason, the GitHub community have restated that "A branch represents an independent line of development". Each new contribution to the master branch is labelled as a commit. A commit is a message that indicates git what exactly was the new contribution. This message is both a simple sentence and a clear message about the new contribution. A good practice is to include a new commit for each new contribution (task or issue solution), instead to create a single commit for a massive number of contributions.
+### Working collaboratively with `git`
 
-Once you have cloned the project into your local system, you should create your own branch. Use the command: "git branch <branch>", where branch corresponds to the name or pseudo-name for the collaborator. If for any reason you wish to delete the local branch, use the command: "git branch -d <branch>". To work on your own brach use the command "git checkout <branch>". Once you have fulfilled the task or issue requirement (editing the file), you should add the file to develop the commit; use the command: "git add FILE". The last command indicates to git that you have created a new version of your branch. With the command: "git commit -m "message" " you can create the commit message. 
-To merge your contribution to the master branch (update the project version based on your new contribution) use the command: "git merge <branch>". To merge your branch with the master, you should be located on the master branch ("git checkout master"). In order to avoid any merging conflict BEFORE to merge your branch is adviseble to update the master with the command :"git pull". Finally when you have realiced the properly merging you can update the master version on the general server (Andrew's server or online server), please use the command: "git push".Table 1. summarizes the steps to create and push a commit based on the previous commands. 
-    
+The above is simple if you are working alone, but if you are working with others, it is important to start using branches. The lastest and updated version of the project is located on the master branch. A new developer should create their branches (local branches) to create improvements and contributions to the master project. In order to protect the general project, it is desirable that always the collaborators work on their branches and once the contribution fulfils the task or issue required, merge the improvement with the master branch. In other words, a branch is a local draft space where the collaborator can create their contribution and verify that it is stable. Perhaps, for this reason, the GitHub community have stated that "A branch represents an independent line of development". Each new contribution to the master branch is labelled as a commit. A commit is a message that indicates git what exactly was the new contribution. This message is both a simple sentence and a clear message about the new contribution. A good practice is to include a new commit for each new contribution (task or issue solution), instead to create a single commit for a massive number of contributions.
+
+Once you have cloned the project into your local system, you should create your own branch. Use the command:
+
+```bash 
+git branch <branch>
+```
+
+where branch corresponds to the name or pseudo-name for the collaborator. To move onto the branch you type:
+
+```bash
+git checkout <branch>
+```
+
+To move back onto the master branch you would type
+
+```bash
+git checkout master
+```
+
+If for any reason you wish to delete the local branch, use the command: 
+
+```bash
+git branch -d <branch>
+```
+
+You should always first pull the remote version of the repo to your master branch using
+
+```bash
+git checkout master
+git status
+git pull origin master
+```
+
+Then you should move onto your branch using
+
+```bash
+git checkout andrew
+```
+
+Then you should merge the master onto your branch using
+
+```bash
+git merge master
+```
+
+Note, this merges the branch "master" onto the branch you are currently on. Now make your changes with a series of add/commits on your local branch. This will not affect the master or the server yet. 
+
+When you are ready to merge your contribution to the master branch (update the project version based on your new contribution) you will move onto the master branch and merge your local branch:
+
+```bash 
+git checkout master
+git pull origin master
+git merge andrew
+git push origin master
+```
+
+It is strongly recommended that you check the status (git status) in between each command to make sure everything is going smoothly.  Table 1. summarizes the steps to create and push a commit based on the previous commands.  
+
 |Git  command       | Description                                 |
 |-------------------|---------------------------------------------|
+<<<<<<< HEAD
 |`>. git status`              |to check if you have any pending commit             | 
 |`>. git pull origin master`              |to update the master branch on your local system              |
 |`>. git branch <Mybranch>`              |to create a new branch              |
@@ -299,8 +355,19 @@ To merge your contribution to the master branch (update the project version base
 |`>.git merge Mybranch`              |
 |`>.git push origin master`              |To update the master branch      |
     
+=======
+|`git pull origin master`              |to update the master branch on your local system              |
+|`git checkout <branch>`            |to start your work on your local workspace (your local branch)       |
+|edit files             | Please visit the section Text editor.Also, you can edit the file on your favourite software |
+|`git add FILE`          |To add the new file    |
+|`git commit -m "message" `               |To include the commit message                          |
+| |  Repeat the above two steps as many times as necessary |
+|`git checkout master `       |To change the workspace towards origin master   |
+|`git pull origin master`            |To update before to merge the new contribution. Mandatory in order to avoid merging conflicts        |
+|`git merge <branch>` | Merge changes from your branch onto the master branch |
+|`git push origin master`            |To update the master branch      |
+>>>>>>> 8ea26854d074b279e00a1c1ba597daa3e032806f
   
-
 ### Advanced: setting up a remote repository on a linux server
 
 You probably don't need to do this, but I'm including here for my reference.
