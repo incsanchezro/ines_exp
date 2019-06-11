@@ -285,14 +285,19 @@ To merge your contribution to the master branch (update the project version base
     
 |Git  command       | Description                                 |
 |-------------------|---------------------------------------------|
-|`git pull`              |to update the master branch on your local system              |
-|`git checkout <branch>`            |to start your work on your local workspace (your local branch)       |
-|`git edit FILE `            |Optional. This command is used to edit the file. Please visit the section Text editor.Also, you can edit the file on your favourite software |
-|`git add FILE`          |To add the new file    |
-|`git commit -m "message" `               |To include the commit message                          |
-|`git checkout origin master `       |To change the workspace towards origin master   |
-|`git pull`            |To update before to merge the new contribution. Mandatory in order to avoid merging conflicts        |
-|`git push`            |To update the master branch      |
+|`>. git status`              |to check if you have any pending commit             | 
+|`>. git pull origin master`              |to update the master branch on your local system              |
+|`>. git branch <Mybranch>`              |to create a new branch              |
+|`>. git checkout <Mybranch>`              |to start your work on your local workspace (your local branch)       |
+|`>.git edit {here I have to edit my files}`              |Optional. This command is used to edit the file. Please visit the section Text editor.Also, you can edit the file on your favourite software |
+|`>.git status`              |to check if you have any pending commit             | 
+|`>.git add “My File edited” `              |To add the new file    |
+|`>.git commit -m “I have edited myfile”`              |To include the commit message                          |
+|`>.git checkout master`              |To change the workspace towards master   |
+|`>.git status`              |to check if you have any pending commit             | 
+|`>.git pull origin master`              |to update the master branch on your local system              |
+|`>.git merge Mybranch`              |
+|`>.git push origin master`              |To update the master branch      |
     
   
 
